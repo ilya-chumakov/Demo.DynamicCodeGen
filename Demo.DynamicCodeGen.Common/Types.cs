@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Demo.DynamicCodeGen.Common
+{
+    public class Src
+    {
+        public Src()
+        {
+            var random = new Random();
+
+            Name = Guid.NewGuid().ToString();
+            Number = random.Next();
+            Float = DateTime.Now.Millisecond / random.Next();
+            DateTime = DateTime.Now;
+        }
+
+        public string Name { get; private set; }
+        public int Number { get; private set; }
+        public float Float { get; private set; }
+        public DateTime DateTime { get; private set; }
+    }
+
+    public class Dest
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+        public float Float { get; set; }
+        public DateTime DateTime { get; set; }
+    }
+}

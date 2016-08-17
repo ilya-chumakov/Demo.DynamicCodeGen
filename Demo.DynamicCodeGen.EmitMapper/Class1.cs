@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Demo.DynamicCodeGen.EmitMapper
 {
-    public class Class1
-    {
-    }
+
 }
