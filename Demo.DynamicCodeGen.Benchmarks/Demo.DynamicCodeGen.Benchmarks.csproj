@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7E947D4-E356-43F4-949E-87BAD4FE6F8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Demo.DynamicCodeGen.Benchmarks</RootNamespace>
+    <AssemblyName>Demo.DynamicCodeGen.Benchmarks</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.AutoMapper\Demo.DynamicCodeGen.AutoMapper.csproj">
+      <Project>{6cab0fdf-8c48-4e2d-b988-717183c157a0}</Project>
+      <Name>Demo.DynamicCodeGen.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Common\Demo.DynamicCodeGen.Common.csproj">
+      <Project>{5f40a95f-3551-4e22-b0e4-c8efe4182fd4}</Project>
+      <Name>Demo.DynamicCodeGen.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.EmitMapper\Demo.DynamicCodeGen.EmitMapper.csproj">
+      <Project>{551f0f4a-3223-442b-86c1-295cbefef73e}</Project>
+      <Name>Demo.DynamicCodeGen.EmitMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Emit\Demo.DynamicCodeGen.Emit.csproj">
+      <Project>{6853ce85-e881-4a7c-98ab-648d318f94b3}</Project>
+      <Name>Demo.DynamicCodeGen.Emit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.ExpressionTrees\Demo.DynamicCodeGen.ExpressionTrees.csproj">
+      <Project>{b05c1132-6462-47ad-abe6-459469a5ddac}</Project>
+      <Name>Demo.DynamicCodeGen.ExpressionTrees</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Manual\Demo.DynamicCodeGen.Manual.csproj">
+      <Project>{8b77d8b2-c803-4c5f-a950-bfeb429029f7}</Project>
+      <Name>Demo.DynamicCodeGen.Manual</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Roslyn\Demo.DynamicCodeGen.Roslyn.csproj">
+      <Project>{c10f5c1a-323a-4786-b55e-4dcbcdb2b5f7}</Project>
+      <Name>Demo.DynamicCodeGen.Roslyn</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
