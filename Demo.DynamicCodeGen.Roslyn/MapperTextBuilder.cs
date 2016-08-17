@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Text;
 
@@ -5,13 +6,8 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class MapperTextBuilder
     {
-        public static string CreateText<TInput, TOutput>()
-            where TInput : class, new()
-            where TOutput : class, new()
+        public static string CreateText(Type srcType, Type destType)
         {
-            var srcType = typeof(TInput);
-            var destType = typeof(TOutput);
-
             var srcProperties = srcType.GetProperties();
             var destProperties = destType.GetProperties();
 

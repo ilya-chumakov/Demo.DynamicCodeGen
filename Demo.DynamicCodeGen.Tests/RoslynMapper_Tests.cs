@@ -13,15 +13,15 @@ namespace Demo.DynamicCodeGen.Tests
     public class RoslynMapper_Tests
     {
         [Test]
-        public void CreateText_Test()
+        public void CreateText_WhenCalled_ReturnsText()
         {
-            string text = MapperTextBuilder.CreateText<Src, Dest>();
+            string text = MapperTextBuilder.CreateText(typeof(Src), typeof(Dest));
 
             Console.WriteLine(text);
         }
 
         [Test]
-        public void CreateMapMethod_WhenCalled_MapsSuccessfully()
+        public void CreateMapMethod_WhenCalled_Success()
         {
             var map = RoslynMapper.CreateMapMethod<Src, Dest>();
 

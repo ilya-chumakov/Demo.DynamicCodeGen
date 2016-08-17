@@ -5,19 +5,19 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class RoslynMapper
     {
-        public static Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
-            where TInput : class, new()
-            where TOutput : class, new()
+        public static Action<TSrc, TDest> CreateMapMethod<TSrc, TDest>()
+            where TSrc : class, new()
+            where TDest : class, new()
         {
-            var srcType = typeof(TInput);
-            var destType = typeof(TOutput);
+            var srcType = typeof(TSrc);
+            var destType = typeof(TDest);
 
-            string text = MapperTextBuilder.CreateText<TInput, TOutput>();
+            string text = MapperTextBuilder.CreateText(srcType, destType);
 
-            var type = MapperTypeBuilder.GetMapperType<TInput, TOutput>(text, srcType, destType);
+            var type = MapperTypeBuilder.GetMapperType(text, srcType, destType);
 
-            return (Action<TInput, TOutput>)
-                Delegate.CreateDelegate(typeof(Action<TInput, TOutput>), type, "Map");
+            return (Action<TSrc, TDest>)
+                Delegate.CreateDelegate(typeof(Action<TSrc, TDest>), type, "Map");
         }
     }
 }

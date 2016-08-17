@@ -11,8 +11,7 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class MapperTypeBuilder
     {
-        public static Type GetMapperType<TInput, TOutput>(string text, Type srcType, Type destType) where TInput : class, new()
-            where TOutput : class, new()
+        public static Type GetMapperType(string text, Type srcType, Type destType)
         {
             var compilation = CreateCompilation(text, srcType, destType);
 
@@ -40,6 +39,7 @@ namespace Demo.DynamicCodeGen.Roslyn
                 options: new CSharpCompilationOptions(
                     outputKind: OutputKind.DynamicallyLinkedLibrary,
                     optimizationLevel: OptimizationLevel.Release));
+
             return compilation;
         }
 
