@@ -3,33 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 
 namespace Demo.DynamicCodeGen.Roslyn
 {
-    public static class RoslynMapperV1
+    public static class MapperTypeBuilder
     {
-        public static Action<TInput, TOutput> CreateFunc<TInput, TOutput>()
-            where TInput : class, new()
+        public static Type GetMapperType<TInput, TOutput>(string text, Type srcType, Type destType) where TInput : class, new()
             where TOutput : class, new()
         {
-            var srcType = typeof(TInput);
-            var destType = typeof(TOutput);
-
-            string text = CreateText<TInput, TOutput>();
-
             var compilation = CreateCompilation(text, srcType, destType);
 
             var assembly = CreateAssembly(compilation);
 
             Type type = assembly.GetType("RoslynCompileSample.Mapper");
-
-            return (Action<TInput, TOutput>)
-                Delegate.CreateDelegate(typeof(Action<TInput, TOutput>), type, "Map");
+            return type;
         }
 
         private static CSharpCompilation CreateCompilation(string text, Type srcType, Type destType)
@@ -79,50 +69,6 @@ namespace Demo.DynamicCodeGen.Roslyn
                 }
             }
             return null;
-        }
-
-        public static string CreateText<TInput, TOutput>()
-            where TInput : class, new()
-            where TOutput : class, new()
-        {
-            var srcType = typeof(TInput);
-            var destType = typeof(TOutput);
-
-            var srcProperties = srcType.GetProperties();
-            var destProperties = destType.GetProperties();
-
-            var builder = new StringBuilder();
-            builder.AppendLine("using System;                                                       ");
-            builder.AppendLine("namespace RoslynCompileSample                                       ");
-            builder.AppendLine("{                                                                   ");
-            builder.AppendLine("    public static class Mapper                                             ");
-            builder.AppendLine("    {                                                               ");
-
-            builder.AppendLine($"public static void Map({srcType.FullName} src, {destType.FullName} dest)");
-            builder.AppendLine("{");
-
-            foreach (var srcProperty in srcProperties)
-            {
-                string name = srcProperty.Name;
-
-                var destProperty = destProperties.First(p => p.Name == name);
-
-                if (destProperty.PropertyType.IsAssignableFrom(srcProperty.PropertyType))
-                {
-                    builder.AppendLine($"dest.{name} = src.{name};");
-                }
-                else
-                {
-                    //custom map
-                }
-            }
-
-            builder.AppendLine("}");
-
-            builder.AppendLine("    }                                                               ");
-            builder.AppendLine("}");
-
-            return builder.ToString();
         }
     }
 }
