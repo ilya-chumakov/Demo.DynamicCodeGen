@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Demo.DynamicCodeGen.Tests.Roslyn
 {
-    public class RoslynMapper_Tests
+    public class MyRoslynMapper_Tests
     {
         [Test]
         public void CreateText_WhenCalled_ReturnsText()
@@ -20,7 +20,7 @@ namespace Demo.DynamicCodeGen.Tests.Roslyn
         [Test]
         public void CreateMapMethod_WhenCalled_Success()
         {
-            var map = RoslynMapper.CreateMapMethod<Src, Dest>();
+            var map = MyRoslynMapper.CreateMapMethod<Src, Dest>();
 
             var src = new Src();
             var dest = new Dest();

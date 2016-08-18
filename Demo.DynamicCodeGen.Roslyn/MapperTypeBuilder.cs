@@ -11,7 +11,7 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class MapperTypeBuilder
     {
-        public static Type GetMapperType(string text, MapContext context)
+        public static Type CreateMapperType(string text, MapContext context)
         {
             var compilation = CreateCompilation(text, context);
 

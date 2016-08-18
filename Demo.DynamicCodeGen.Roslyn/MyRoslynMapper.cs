@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Demo.DynamicCodeGen.Roslyn
 {
-    public static class RoslynMapper
+    public static class MyRoslynMapper
     {
         public static Action<TSrc, TDest> CreateMapMethod<TSrc, TDest>()
             where TSrc : class, new()
@@ -13,7 +13,7 @@ namespace Demo.DynamicCodeGen.Roslyn
 
             string text = MapperTextBuilder.CreateText(context);
 
-            var type = MapperTypeBuilder.GetMapperType(text, context);
+            var type = MapperTypeBuilder.CreateMapperType(text, context);
 
             return (Action<TSrc, TDest>)
                 Delegate.CreateDelegate(typeof(Action<TSrc, TDest>), type, context.MapperMethodName);
