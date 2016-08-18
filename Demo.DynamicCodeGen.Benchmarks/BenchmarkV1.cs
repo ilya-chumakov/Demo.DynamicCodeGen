@@ -14,6 +14,7 @@ namespace Demo.DynamicCodeGen.Benchmarks
 {
     public class BenchmarkV1
     {
+        public int NameMaxLength { get; private set; }
         public Dictionary<string, Action<Src, Dest>> Mappers { get; set; }
 
         [SetUp]
@@ -24,6 +25,8 @@ namespace Demo.DynamicCodeGen.Benchmarks
             Mappers.Add("MyEmitMapper", MyEmitMapper.CreateMapMethod<Src, Dest>());
             Mappers.Add("MyExpressionMapper", MyExpressionMapper.CreateMapMethod<Src, Dest>());
             Mappers.Add("MyRoslynMapper", MyRoslynMapper.CreateMapMethod<Src, Dest>());
+
+            NameMaxLength = Mappers.Keys.Max(k => k.Length);
         }
 
         [Test]
@@ -38,7 +41,7 @@ namespace Demo.DynamicCodeGen.Benchmarks
 
             foreach (var kvp in Mappers)
             {
-                Console.WriteLine(kvp.Key);
+                Console.Write(MapperNameFormatted(kvp.Key));
 
                 Action<Src, Dest> mapMethod = kvp.Value;
 
@@ -65,6 +68,11 @@ namespace Demo.DynamicCodeGen.Benchmarks
                 }
                 Console.WriteLine();
             }
+        }
+
+        private string MapperNameFormatted(string key)
+        {
+            return key + new String(' ', NameMaxLength - key.Length + 2);
         }
     }
 }
