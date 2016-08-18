@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 
 namespace Demo.DynamicCodeGen.Emit
 {
-    public static class MyEmitMapper
+    public static class MyEmitMapper 
     {
         public static Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
         {
