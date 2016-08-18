@@ -15,7 +15,9 @@ namespace Demo.DynamicCodeGen.Tests
         [Test]
         public void CreateText_WhenCalled_ReturnsText()
         {
-            string text = MapperTextBuilder.CreateText(typeof(Src), typeof(Dest));
+            var context = MapContext.Create<Src, Dest>();
+
+            string text = MapperTextBuilder.CreateText(context);
 
             Console.WriteLine(text);
         }

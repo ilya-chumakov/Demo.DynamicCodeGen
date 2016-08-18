@@ -118,6 +118,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapContext.cs" />
+    <Compile Include="NamingTools.cs" />
     <Compile Include="RoslynMapper.cs" />
     <Compile Include="MapperTextBuilder.cs" />
     <Compile Include="MapperTypeBuilder.cs" />

@@ -6,19 +6,18 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class MapperTextBuilder
     {
-        public static string CreateText(Type srcType, Type destType)
+        public static string CreateText(MapContext context)
         {
-            var srcProperties = srcType.GetProperties();
-            var destProperties = destType.GetProperties();
+            var srcProperties = context.SrcType.GetProperties();
+            var destProperties = context.DestType.GetProperties();
 
             var builder = new StringBuilder();
             builder.AppendLine("using System;                                                       ");
-            builder.AppendLine("namespace RoslynCompileSample                                       ");
+            builder.AppendLine($"namespace {context.NamespaceName}                                ");
             builder.AppendLine("{                                                                   ");
-            builder.AppendLine("    public static class Mapper                                      ");
+            builder.AppendLine($"    public static class {context.MapperClassName}                  ");
             builder.AppendLine("    {                                                               ");
-
-            builder.AppendLine($"       public static void Map({srcType.FullName} src, {destType.FullName} dest)");
+            builder.AppendLine($"       public static void {context.MapperMethodName}({context.SrcType.FullName} src, {context.DestType.FullName} dest)");
             builder.AppendLine("        {");
 
             foreach (var srcProperty in srcProperties)

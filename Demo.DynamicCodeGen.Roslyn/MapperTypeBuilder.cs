@@ -11,25 +11,24 @@ namespace Demo.DynamicCodeGen.Roslyn
 {
     public static class MapperTypeBuilder
     {
-        public static Type GetMapperType(string text, Type srcType, Type destType)
+        public static Type GetMapperType(string text, MapContext context)
         {
-            var compilation = CreateCompilation(text, srcType, destType);
+            var compilation = CreateCompilation(text, context);
 
             var assembly = CreateAssembly(compilation);
 
-            Type type = assembly.GetType("RoslynCompileSample.Mapper");
-            return type;
+            return assembly.GetType($"{context.MapperClassFullName}");
         }
 
-        private static CSharpCompilation CreateCompilation(string text, Type srcType, Type destType)
+        private static CSharpCompilation CreateCompilation(string text, MapContext context)
         {
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(text);
 
             string assemblyName = Path.GetRandomFileName();
             MetadataReference[] references = {
                 MetadataReference.CreateFromFile(typeof (object).Assembly.Location),
-                MetadataReference.CreateFromFile(srcType.Assembly.Location),
-                MetadataReference.CreateFromFile(destType.Assembly.Location),
+                MetadataReference.CreateFromFile(context.SrcType.Assembly.Location),
+                MetadataReference.CreateFromFile(context.DestType.Assembly.Location),
             };
 
             CSharpCompilation compilation = CSharpCompilation.Create(

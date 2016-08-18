@@ -9,15 +9,14 @@ namespace Demo.DynamicCodeGen.Roslyn
             where TSrc : class, new()
             where TDest : class, new()
         {
-            var srcType = typeof(TSrc);
-            var destType = typeof(TDest);
+            var context = MapContext.Create<TSrc, TDest>();
 
-            string text = MapperTextBuilder.CreateText(srcType, destType);
+            string text = MapperTextBuilder.CreateText(context);
 
-            var type = MapperTypeBuilder.GetMapperType(text, srcType, destType);
+            var type = MapperTypeBuilder.GetMapperType(text, context);
 
             return (Action<TSrc, TDest>)
-                Delegate.CreateDelegate(typeof(Action<TSrc, TDest>), type, "Map");
+                Delegate.CreateDelegate(typeof(Action<TSrc, TDest>), type, context.MapperMethodName);
         }
     }
 }
