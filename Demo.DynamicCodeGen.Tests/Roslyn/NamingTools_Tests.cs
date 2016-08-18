@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using Demo.DynamicCodeGen.Common;
 using Demo.DynamicCodeGen.Roslyn;
 using NUnit.Framework;
 
-namespace Demo.DynamicCodeGen.Tests
+namespace Demo.DynamicCodeGen.Tests.Roslyn
 {
     public class NamingTools_Tests
     {

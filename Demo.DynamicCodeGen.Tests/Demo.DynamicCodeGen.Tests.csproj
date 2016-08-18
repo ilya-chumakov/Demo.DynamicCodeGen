@@ -52,8 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NamingTools_Tests.cs" />
-    <Compile Include="RoslynMapper_Tests.cs" />
+    <Compile Include="Roslyn\NamingTools_Tests.cs" />
+    <Compile Include="Roslyn\RoslynMapper_Tests.cs" />
     <Compile Include="ObjectComparer.cs" />
     <Compile Include="CompareResult.cs" />
     <Compile Include="Comparer_Tests.cs" />
