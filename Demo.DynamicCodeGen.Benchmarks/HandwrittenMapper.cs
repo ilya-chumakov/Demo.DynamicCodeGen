@@ -3,14 +3,9 @@ using Demo.DynamicCodeGen.Common;
 
 namespace Demo.DynamicCodeGen.Benchmarks
 {
-    public static class HandwrittenMapper
+    public class HandwrittenMapper : ITestableMapper
     {
-        public static Action<Src, Dest> CreateFunc()
-        {
-            Action<Src, Dest> action = Map;
-
-            return action;
-        }
+        public static HandwrittenMapper Instance => new HandwrittenMapper();
 
         public static void Map(Src src, Dest dest)
         {
@@ -18,6 +13,11 @@ namespace Demo.DynamicCodeGen.Benchmarks
             dest.DateTime = src.DateTime;
             dest.Float = src.Float;
             dest.Number = src.Number;
+        }
+
+        public Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
+        {
+            return (Action<Src, Dest>) Map as Action<TInput, TOutput>;
         }
     }
 }

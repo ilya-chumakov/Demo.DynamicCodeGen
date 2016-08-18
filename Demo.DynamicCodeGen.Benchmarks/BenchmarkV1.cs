@@ -25,6 +25,7 @@ namespace Demo.DynamicCodeGen.Benchmarks
             Mappers.Add("MyEmitMapper", MyEmitMapper.Instance.CreateMapMethod<Src, Dest>());
             Mappers.Add("MyExpressionMapper", MyExpressionMapper.Instance.CreateMapMethod<Src, Dest>());
             Mappers.Add("MyRoslynMapper", MyRoslynMapper.Instance.CreateMapMethod<Src, Dest>());
+            Mappers.Add("HandwrittenMapper", HandwrittenMapper.Instance.CreateMapMethod<Src, Dest>());
 
             NameMaxLength = Mappers.Keys.Max(k => k.Length);
         }
@@ -32,12 +33,12 @@ namespace Demo.DynamicCodeGen.Benchmarks
         [Test]
         public void Run_AllMappers_MeasuresTime()
         {
-            int[] exponents = new[] { 5, 6 };
+            int[] exponents = new[] { 5, 6, 7 };
             //int[] exponents = new[] { 5, 6, 7, 8 };
-            Console.WriteLine("Exponents:");
+            Console.Write("Exponents:  ");
             Array.ForEach(exponents, e => Console.Write(e + " "));
             Console.WriteLine();
-            Console.WriteLine("--------------");
+            Console.WriteLine("--------------------------");
 
             foreach (var kvp in Mappers)
             {
