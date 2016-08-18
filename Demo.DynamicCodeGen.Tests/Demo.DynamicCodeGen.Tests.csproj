@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Emit\MyEmitMapper_Tests.cs" />
     <Compile Include="ExpressionTrees\MyExpressionMapper_Tests.cs" />
     <Compile Include="Roslyn\NamingTools_Tests.cs" />
     <Compile Include="Roslyn\MyRoslynMapper_Tests.cs" />
