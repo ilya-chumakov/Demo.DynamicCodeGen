@@ -22,9 +22,9 @@ namespace Demo.DynamicCodeGen.Benchmarks
         {
             Mappers = new Dictionary<string, Action<Src, Dest>>();
 
-            Mappers.Add("MyEmitMapper", MyEmitMapper.CreateMapMethod<Src, Dest>());
-            Mappers.Add("MyExpressionMapper", MyExpressionMapper.CreateMapMethod<Src, Dest>());
-            Mappers.Add("MyRoslynMapper", MyRoslynMapper.CreateMapMethod<Src, Dest>());
+            Mappers.Add("MyEmitMapper", MyEmitMapper.Instance.CreateMapMethod<Src, Dest>());
+            Mappers.Add("MyExpressionMapper", MyExpressionMapper.Instance.CreateMapMethod<Src, Dest>());
+            Mappers.Add("MyRoslynMapper", MyRoslynMapper.Instance.CreateMapMethod<Src, Dest>());
 
             NameMaxLength = Mappers.Keys.Max(k => k.Length);
         }

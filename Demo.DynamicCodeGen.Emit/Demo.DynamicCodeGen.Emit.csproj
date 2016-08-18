@@ -44,6 +44,12 @@
     <Compile Include="MyEmitMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Common\Demo.DynamicCodeGen.Common.csproj">
+      <Project>{5f40a95f-3551-4e22-b0e4-c8efe4182fd4}</Project>
+      <Name>Demo.DynamicCodeGen.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

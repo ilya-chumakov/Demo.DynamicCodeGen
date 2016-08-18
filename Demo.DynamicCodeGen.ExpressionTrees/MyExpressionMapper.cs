@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Demo.DynamicCodeGen.Common;
 
 namespace Demo.DynamicCodeGen.ExpressionTrees
 {
-    public static class MyExpressionMapper
+    public class MyExpressionMapper : ITestableMapper
     {
-        public static Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
-            where TInput : class, new()
-            where TOutput : class, new()
+        public static MyExpressionMapper Instance => new MyExpressionMapper();
+
+        public Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
         {
             Expression<Action<TInput, TOutput>> expression = ExpressionBuilder.CreateExpression<TInput, TOutput>();
 

@@ -20,7 +20,7 @@ namespace Demo.DynamicCodeGen.Tests.Roslyn
         [Test]
         public void CreateMapMethod_WhenCalled_Success()
         {
-            var map = MyRoslynMapper.CreateMapMethod<Src, Dest>();
+            var map = MyRoslynMapper.Instance.CreateMapMethod<Src, Dest>();
 
             var src = new Src();
             var dest = new Dest();

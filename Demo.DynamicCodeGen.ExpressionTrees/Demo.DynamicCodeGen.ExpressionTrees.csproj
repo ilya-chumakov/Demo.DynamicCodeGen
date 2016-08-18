@@ -45,6 +45,12 @@
     <Compile Include="MapperTypeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.Common\Demo.DynamicCodeGen.Common.csproj">
+      <Project>{5F40A95F-3551-4E22-B0E4-C8EFE4182FD4}</Project>
+      <Name>Demo.DynamicCodeGen.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

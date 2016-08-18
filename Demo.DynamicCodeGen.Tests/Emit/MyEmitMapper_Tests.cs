@@ -9,7 +9,7 @@ namespace Demo.DynamicCodeGen.Tests.Emit
         [Test]
         public void CreateMapMethod_WhenCalled_Success()
         {
-            var map = MyEmitMapper.CreateMapMethod<Src, Dest>();
+            var map = MyEmitMapper.Instance.CreateMapMethod<Src, Dest>();
 
             var src = new Src();
             var dest = new Dest();

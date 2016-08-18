@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Reflection;
 using System.Reflection.Emit;
+using Demo.DynamicCodeGen.Common;
 
 namespace Demo.DynamicCodeGen.Emit
 {
-    public static class MyEmitMapper 
+    public class MyEmitMapper : ITestableMapper
     {
-        public static Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
+        public static MyEmitMapper Instance => new MyEmitMapper();
+
+        public Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
         {
             var srcType = typeof(TInput);
             var destType = typeof(TOutput);

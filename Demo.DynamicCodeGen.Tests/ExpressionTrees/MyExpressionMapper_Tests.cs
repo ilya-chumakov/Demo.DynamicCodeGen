@@ -10,7 +10,7 @@ namespace Demo.DynamicCodeGen.Tests.ExpressionTrees
         [Test]
         public void CreateMapMethod_WhenCalled_Success()
         {
-            var map = MyExpressionMapper.CreateMapMethod<Src, Dest>();
+            var map = MyExpressionMapper.Instance.CreateMapMethod<Src, Dest>();
 
             var src = new Src();
             var dest = new Dest();

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Demo.DynamicCodeGen.Common;
 
 namespace Demo.DynamicCodeGen.Roslyn
 {
-    public static class MyRoslynMapper
+    public class MyRoslynMapper : ITestableMapper
     {
-        public static Action<TSrc, TDest> CreateMapMethod<TSrc, TDest>()
-            where TSrc : class, new()
-            where TDest : class, new()
+        public static MyRoslynMapper Instance => new MyRoslynMapper();
+
+        public Action<TSrc, TDest> CreateMapMethod<TSrc, TDest>()
         {
             var context = MapContext.Create<TSrc, TDest>();
 
