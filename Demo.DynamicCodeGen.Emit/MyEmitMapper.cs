@@ -7,7 +7,7 @@ namespace Demo.DynamicCodeGen.Emit
 {
     public class MyEmitMapper : ITestableMapper
     {
-        public static MyEmitMapper Instance => new MyEmitMapper();
+        public static ITestableMapper Instance => new MyEmitMapper();
 
         public Action<TInput, TOutput> CreateMapMethod<TInput, TOutput>()
         {

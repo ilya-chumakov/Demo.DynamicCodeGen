@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Emit\MyEmitMapper_Tests.cs" />
     <Compile Include="ExpressionTrees\MyExpressionMapper_Tests.cs" />
+    <Compile Include="MyRoslynMapper_Tests.cs" />
     <Compile Include="Roslyn\NamingTools_Tests.cs" />
     <Compile Include="Roslyn\MyRoslynMapper_Tests.cs" />
     <Compile Include="ObjectComparer.cs" />
@@ -73,6 +74,10 @@
     <ProjectReference Include="..\Demo.DynamicCodeGen.ExpressionTrees\Demo.DynamicCodeGen.ExpressionTrees.csproj">
       <Project>{b05c1132-6462-47ad-abe6-459469a5ddac}</Project>
       <Name>Demo.DynamicCodeGen.ExpressionTrees</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.ExternalMappers\Demo.DynamicCodeGen.ExternalMappers.csproj">
+      <Project>{7b96a1fb-a0cb-4c57-8451-87b99f6f2d05}</Project>
+      <Name>Demo.DynamicCodeGen.ExternalMappers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Demo.DynamicCodeGen.Roslyn\Demo.DynamicCodeGen.Roslyn.csproj">
       <Project>{c10f5c1a-323a-4786-b55e-4dcbcdb2b5f7}</Project>
