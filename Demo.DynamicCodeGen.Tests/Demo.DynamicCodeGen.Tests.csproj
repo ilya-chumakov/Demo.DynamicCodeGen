@@ -52,13 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Emit\MyEmitMapper_Tests.cs" />
-    <Compile Include="ExpressionTrees\MyExpressionMapper_Tests.cs" />
-    <Compile Include="MyRoslynMapper_Tests.cs" />
+    <Compile Include="Mappers_Tests.cs" />
     <Compile Include="Roslyn\NamingTools_Tests.cs" />
-    <Compile Include="Roslyn\MyRoslynMapper_Tests.cs" />
-    <Compile Include="ObjectComparer.cs" />
-    <Compile Include="CompareResult.cs" />
+    <Compile Include="Tools\ObjectComparer.cs" />
+    <Compile Include="Tools\CompareResult.cs" />
     <Compile Include="Comparer_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
