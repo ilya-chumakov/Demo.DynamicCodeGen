@@ -79,6 +79,7 @@ namespace Demo.DynamicCodeGen.Benchmarks
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("--------------------------");
         }
 
         private string MapperNameFormatted(string key)
