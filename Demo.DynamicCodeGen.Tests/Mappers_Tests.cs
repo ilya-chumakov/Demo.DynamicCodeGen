@@ -33,6 +33,12 @@ namespace Demo.DynamicCodeGen.Tests
             Test(AutoMapperFacade.Instance);
         }
 
+        [Test]
+        public void EmitMapperFacade_Map_Success()
+        {
+            Test(EmitMapperFacade.Instance);
+        }
+
         private static void Test(ITestableMapper mapper)
         {
             var map = mapper.CreateMapMethod<Src, Dest>();
