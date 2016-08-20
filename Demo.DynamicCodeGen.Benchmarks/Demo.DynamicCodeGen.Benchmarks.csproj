@@ -69,6 +69,10 @@
       <Project>{b05c1132-6462-47ad-abe6-459469a5ddac}</Project>
       <Name>Demo.DynamicCodeGen.ExpressionTrees</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Demo.DynamicCodeGen.ExternalMappers\Demo.DynamicCodeGen.ExternalMappers.csproj">
+      <Project>{7b96a1fb-a0cb-4c57-8451-87b99f6f2d05}</Project>
+      <Name>Demo.DynamicCodeGen.ExternalMappers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Demo.DynamicCodeGen.Roslyn\Demo.DynamicCodeGen.Roslyn.csproj">
       <Project>{c10f5c1a-323a-4786-b55e-4dcbcdb2b5f7}</Project>
       <Name>Demo.DynamicCodeGen.Roslyn</Name>

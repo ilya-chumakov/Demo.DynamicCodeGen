@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Demo.DynamicCodeGen.Common;
 using Demo.DynamicCodeGen.Emit;
 using Demo.DynamicCodeGen.ExpressionTrees;
+using Demo.DynamicCodeGen.ExternalMappers;
 using Demo.DynamicCodeGen.Roslyn;
 using NUnit.Framework;
 
@@ -22,18 +23,26 @@ namespace Demo.DynamicCodeGen.Benchmarks
         {
             Mappers = new Dictionary<string, Action<Src, Dest>>();
 
-            Mappers.Add("MyEmitMapper", MyEmitMapper.Instance.CreateMapMethod<Src, Dest>());
-            Mappers.Add("MyExpressionMapper", MyExpressionMapper.Instance.CreateMapMethod<Src, Dest>());
-            Mappers.Add("MyRoslynMapper", MyRoslynMapper.Instance.CreateMapMethod<Src, Dest>());
-            Mappers.Add("HandwrittenMapper", HandwrittenMapper.Instance.CreateMapMethod<Src, Dest>());
+            Register(MyEmitMapper.Instance);
+            Register(MyExpressionMapper.Instance);
+            Register(MyRoslynMapper.Instance);
+            Register(HandwrittenMapper.Instance);
+            Register(AutoMapperFacade.Instance);
+            Register(EmitMapperFacade.Instance);
+            Register(FastMapperFacade.Instance);
 
             NameMaxLength = Mappers.Keys.Max(k => k.Length);
+        }
+
+        private void Register(ITestableMapper mapper)
+        {
+            Mappers.Add(mapper.GetType().Name, mapper.CreateMapMethod<Src, Dest>());
         }
 
         [Test]
         public void Run_AllMappers_MeasuresTime()
         {
-            int[] exponents = new[] { 5, 6, 7 };
+            int[] exponents = new[] { 5, 6 };
             //int[] exponents = new[] { 5, 6, 7, 8 };
             Console.Write("Exponents:  ");
             Array.ForEach(exponents, e => Console.Write(e + " "));
