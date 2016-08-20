@@ -39,6 +39,12 @@ namespace Demo.DynamicCodeGen.Tests
             Test(EmitMapperFacade.Instance);
         }
 
+        [Test]
+        public void FastMapperFacade_Map_Success()
+        {
+            Test(FastMapperFacade.Instance);
+        }
+
         private static void Test(ITestableMapper mapper)
         {
             var map = mapper.CreateMapMethod<Src, Dest>();
