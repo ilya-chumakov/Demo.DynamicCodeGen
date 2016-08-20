@@ -24,7 +24,8 @@ namespace Demo.DynamicCodeGen.Benchmarks
             Mappers = new Dictionary<string, Action<Src, Dest>>();
 
             Register(MyEmitMapper.Instance);
-            Register(MyExpressionMapper.Instance);
+            Register(MyExpressionMapperV1.Instance);
+            Register(MyExpressionMapperV2.Instance);
             Register(MyRoslynMapper.Instance);
             Register(HandwrittenMapper.Instance);
             Register(AutoMapperFacade.Instance);

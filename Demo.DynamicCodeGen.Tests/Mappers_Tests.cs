@@ -16,9 +16,15 @@ namespace Demo.DynamicCodeGen.Tests
         }
         
         [Test]
-        public void MyExpressionMapper_Map_Success()
+        public void MyExpressionMapperV1_Map_Success()
         {
-            Test(MyExpressionMapper.Instance);
+            Test(MyExpressionMapperV1.Instance);
+        }
+        
+        [Test]
+        public void MyExpressionMapperV2_Map_Success()
+        {
+            Test(MyExpressionMapperV2.Instance);
         }
         
         [Test]
