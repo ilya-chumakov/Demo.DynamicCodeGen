@@ -43,8 +43,8 @@ namespace Demo.DynamicCodeGen.Benchmarks
         [Test]
         public void Run_AllMappers_MeasuresTime()
         {
-            int[] exponents = new[] { 5, 6 };
-            //int[] exponents = new[] { 5, 6, 7, 8 };
+            //int[] exponents = new[] { 5, 6 };
+            int[] exponents = new[] { 5, 6, 7, 8 };
             Console.Write("Exponents:  ");
             Array.ForEach(exponents, e => Console.Write(e + " "));
             Console.WriteLine();
