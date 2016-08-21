@@ -13,6 +13,7 @@ The only thing implemented is simple object-to-object mapping.  The benchmark es
  - FastMapper
 
 Result:
+![Alt text](/content/Chart.png?raw=true "Title")
 
 **Where are AutoMapper and FastMapper?** They are too slow to include it to chart: 5-10x times slower than EmitMapper. DISCLAIMER: I like AutoMapper for its convenient and flexible API. AutoMapper is fast enough in many real-world cases, and it is slower than handwritten code just because it provides a lot of awesome features to customize your mappings.
 
