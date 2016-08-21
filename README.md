@@ -4,7 +4,7 @@ Examples of dynamic code generation using various technologies:
 
  - parsing and compilation C# code via Roslyn
  - direct MSIL emitting
- - expression trees compilation
+ - expression tree compilation
 
 The only thing implemented is simple object-to-object mapping.  The benchmark estimates map perfomance and provides comparison to following popular .NET mapping tools:
 
