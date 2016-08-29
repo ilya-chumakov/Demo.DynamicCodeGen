@@ -12,8 +12,19 @@ The only thing implemented is simple object-to-object mapping.  The benchmark es
  - EmitMapper 
  - FastMapper
 
-Result:
+Mapping task is to copy all properties from `Src` instance to equivalent `Dest` instance:
+    
+    public class Dest
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+        public float Float { get; set; }
+        public DateTime DateTime { get; set; }
+    }
+    
+Summarized time to execute 10^8 map operations is on the chart:
 ![Alt text](/content/Chart.png?raw=true "Title")
+The results are quite interesting: technically it is possible to generate optimal code (I mean "optimal" the code hand-written mapper contains) via any of these technologies: Roslyn, MSIL, expression trees.
 
 **Where are AutoMapper and FastMapper?** They are too slow to include it to chart: 5-10x times slower than EmitMapper. DISCLAIMER: I like AutoMapper for its convenient and flexible API. AutoMapper is fast enough in many real-world cases, and it is slower than handwritten code just because it provides a lot of awesome features to customize your mappings.
 
